@@ -105,6 +105,7 @@ public class Order implements Serializable {
 		this.payment = payment;
 	}
 	
+	// Methods
 	public Double getTotal() {
 		double sum = 0;
 		
