@@ -26,6 +26,7 @@ public class Order implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	// Attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -45,6 +46,7 @@ public class Order implements Serializable {
 	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
 	private Payment payment;
 
+	// Constructors
 	public Order() {
 	}
 
@@ -56,6 +58,7 @@ public class Order implements Serializable {
 		this.client = client;
 	}
 
+	// Getters and Setters
 	public Long getId() {
 		return id;
 	}
@@ -101,7 +104,18 @@ public class Order implements Serializable {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
+	
+	public Double getTotal() {
+		double sum = 0;
+		
+		for(OrderItem x : items) {
+			sum += x.getSubTotal();
+		}
+		
+		return sum;
+	}
 
+	// HashCode and Equals
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
