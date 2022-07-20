@@ -12,7 +12,6 @@ import com.betopicanco.course.repositories.CategoryRepository;
 @Service
 public class CategoryService {
 
-	
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
